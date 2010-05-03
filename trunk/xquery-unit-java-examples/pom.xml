@@ -1,0 +1,107 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>com.marklogic.ps</groupId>
+  <artifactId>xquery-unit-examples</artifactId>
+  <version>0.1</version>
+  <packaging>jar</packaging>
+  
+  <name>xquery-unit-examples</name>
+  <description>MarkLogic XQuery Unit Examples</description>
+  <inceptionYear>2010</inceptionYear>
+  <url>http://maven.apache.org</url>
+  
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  
+  <developers>
+    <developer>
+      <id>mhelmstetter</id>
+      <name>Mark Helmstetter</name>
+      <email>mark@helmstetter.com</email>
+      <timezone>-5</timezone>
+      <roles>
+        <role>Maintainer</role>
+      </roles>
+    </developer>
+  </developers>
+  
+  <distributionManagement>
+    <repository>
+      <id>helmstetter-maven</id>
+      <name>helmstetter-maven</name>
+      <url>scp://helmstetter.com/var/www/helmstetter.com/maven</url>
+    </repository>
+  </distributionManagement>
+  
+  <repositories>
+  	<repository>
+	  	<id>helmstetter-maven</id>
+	    <name>helmstetter.com maven repository</name>
+	    <url>http://www.helmstetter.com/maven</url>
+  	</repository>
+  </repositories>
+  
+  <properties>
+    <mavenVersion>2.2.1</mavenVersion>
+  </properties>  
+  
+  <dependencies>
+   <dependency>
+      <groupId>com.marklogic.ps</groupId>
+      <artifactId>xquery-unit</artifactId>
+      <version>0.3</version>
+    </dependency>
+  </dependencies>
+  <build>
+	<pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+            <plugin>
+              <artifactId>maven-assembly-plugin</artifactId>
+              <configuration>
+                <descriptors>
+                  <descriptor>src/main/assembly/distribution.xml</descriptor>
+                </descriptors>
+              </configuration>
+            </plugin>      
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-eclipse-plugin</artifactId>
+              <version>2.8</version>
+              <configuration>
+                <sourceExcludes>
+                  <sourceExclude>**/.svn/**</sourceExclude>
+                </sourceExcludes>
+                <sourceIncludes>
+                  <sourceInclude>**/*.xml</sourceInclude>
+                  <sourceInclude>**/*.properties</sourceInclude>
+                </sourceIncludes>
+              </configuration>
+            </plugin>
+		</plugins>
+	</pluginManagement>
+	</build>  
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-plugin-plugin</artifactId>
+        <version>2.2</version>
+      </plugin>
+    </plugins>
+  </reporting>  
+  
+</project>

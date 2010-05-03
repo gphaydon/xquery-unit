@@ -1,0 +1,185 @@
+<MedlineCitation Owner="NLM" Status="Completed">
+  <MedlineID>21986300</MedlineID>
+  <PMID>11990906</PMID>
+  <DateCreated>
+    <Year>2002</Year>
+    <Month>05</Month>
+    <Day>06</Day>
+  </DateCreated>
+  <DateCompleted>
+    <Year>2002</Year>
+    <Month>05</Month>
+    <Day>24</Day>
+  </DateCompleted>
+  <Article>
+    <Journal>
+      <ISSN>0090-3493</ISSN>
+      <JournalIssue>
+        <Volume>30</Volume>
+        <Issue>3</Issue>
+        <PubDate>
+          <Year>2002</Year>
+          <Month>Mar</Month>
+        </PubDate>
+      </JournalIssue>
+    </Journal>
+    <ArticleTitle>Intensive care unit admission has minimal impact on
+      long-term mortality.</ArticleTitle>
+    <Pagination>
+      <MedlinePgn>501-7</MedlinePgn>
+    </Pagination>
+    <Abstract>
+      <AbstractText>OBJECTIVE: To measure the association between
+        intensive care unit (ICU) admission and both hospital and
+        long-term mortality, separate from the effect of hospital
+        admission alone. DESIGN: Retrospective cohort study. SETTING:
+        All hospitals in British Columbia, Canada, during 3 fiscal
+        years, 1994 to 1996. PATIENTS: A total of 27,103 patients
+        admitted to ICU and 41,308 (5% random sample) patients admitted
+        to hospital but not to ICU. INTERVENTION: None. MEASUREMENTS AND
+        MAIN RESULTS: Although ICU admission was an important factor
+        associated with hospital mortality (odds ratio: 9.12; 95%
+        confidence interval: 8.34-9.96), the association between ICU
+        admission and mortality after discharge was relatively minimal
+        (hazard ratio: 1.21; 95% confidence interval: 1.17-1.27) and was
+        completely overshadowed by the effect of age, gender, and
+        diagnosis. CONCLUSIONS: After controlling for the effect of
+        hospital admission, admission to ICU has minimal independent
+        effect on mortality after discharge.</AbstractText>
+    </Abstract>
+    <Affiliation>Centre for Health Evaluation and Outcome Sciences, St.
+      Paul's Hospital and University of British Columbia, Vancouver,
+      Canada.</Affiliation>
+    <AuthorList CompleteYN="Y">
+      <Author>
+        <LastName>Keenan</LastName>
+        <ForeName>Sean P</ForeName>
+        <Initials>SP</Initials>
+      </Author>
+      <Author>
+        <LastName>Dodek</LastName>
+        <ForeName>Peter</ForeName>
+        <Initials>P</Initials>
+      </Author>
+      <Author>
+        <LastName>Chan</LastName>
+        <ForeName>Keith</ForeName>
+        <Initials>K</Initials>
+      </Author>
+      <Author>
+        <LastName>Hogg</LastName>
+        <ForeName>Robert S</ForeName>
+        <Initials>RS</Initials>
+      </Author>
+      <Author>
+        <LastName>Craib</LastName>
+        <ForeName>Kevin J P</ForeName>
+        <Initials>KJ</Initials>
+      </Author>
+      <Author>
+        <LastName>Anis</LastName>
+        <ForeName>Aslam H</ForeName>
+        <Initials>AH</Initials>
+      </Author>
+      <Author>
+        <LastName>Spinelli</LastName>
+        <ForeName>John J</ForeName>
+        <Initials>JJ</Initials>
+      </Author>
+    </AuthorList>
+    <Language>eng</Language>
+    <PublicationTypeList>
+      <PublicationType>Journal Article</PublicationType>
+    </PublicationTypeList>
+  </Article>
+  <MedlineJournalInfo>
+    <Country>United States</Country>
+    <MedlineTA>Crit Care Med</MedlineTA>
+    <NlmUniqueID>0355501</NlmUniqueID>
+  </MedlineJournalInfo>
+  <CitationSubset>AIM</CitationSubset>
+  <CitationSubset>IM</CitationSubset>
+  <CommentsCorrections>
+    <CommentIn>
+      <RefSource>Crit Care Med. 2002 Mar;30(3):703-5</RefSource>
+      <PMID>11990940</PMID>
+    </CommentIn>
+  </CommentsCorrections>
+  <MeshHeadingList>
+    <MeshHeading>
+      <DescriptorName MajorTopicYN="N">Adult</DescriptorName>
+    </MeshHeading>
+    <MeshHeading>
+      <DescriptorName MajorTopicYN="N">Aged</DescriptorName>
+    </MeshHeading>
+    <MeshHeading>
+      <DescriptorName MajorTopicYN="N">Analysis of Variance
+      </DescriptorName>
+    </MeshHeading>
+    <MeshHeading>
+      <DescriptorName MajorTopicYN="N">British Columbia
+      </DescriptorName>
+      <QualifierName MajorTopicYN="N">epidemiology
+      </QualifierName>
+    </MeshHeading>
+    <MeshHeading>
+      <DescriptorName MajorTopicYN="N">Comparative Study
+      </DescriptorName>
+    </MeshHeading>
+    <MeshHeading>
+      <DescriptorName MajorTopicYN="N">Female
+      </DescriptorName>
+    </MeshHeading>
+    <MeshHeading>
+      <DescriptorName MajorTopicYN="Y">Hospital Mortality
+      </DescriptorName>
+    </MeshHeading>
+    <MeshHeading>
+      <DescriptorName MajorTopicYN="N">Human</DescriptorName>
+    </MeshHeading>
+    <MeshHeading>
+      <DescriptorName MajorTopicYN="N">Intensive Care Units
+      </DescriptorName>
+      <QualifierName MajorTopicYN="Y">utilization
+      </QualifierName>
+    </MeshHeading>
+    <MeshHeading>
+      <DescriptorName MajorTopicYN="N">Male</DescriptorName>
+    </MeshHeading>
+    <MeshHeading>
+      <DescriptorName MajorTopicYN="N">Middle Age
+      </DescriptorName>
+    </MeshHeading>
+    <MeshHeading>
+      <DescriptorName MajorTopicYN="Y">Outcome Assessment
+        (Health Care)</DescriptorName>
+    </MeshHeading>
+    <MeshHeading>
+      <DescriptorName MajorTopicYN="N">Regression Analysis
+      </DescriptorName>
+    </MeshHeading>
+    <MeshHeading>
+      <DescriptorName MajorTopicYN="N">Retrospective Studies
+      </DescriptorName>
+    </MeshHeading>
+    <MeshHeading>
+      <DescriptorName MajorTopicYN="N">Risk</DescriptorName>
+    </MeshHeading>
+    <MeshHeading>
+      <DescriptorName MajorTopicYN="N">Risk Adjustment
+      </DescriptorName>
+    </MeshHeading>
+    <MeshHeading>
+      <DescriptorName MajorTopicYN="N">Support, Non-U.S.
+        Gov't</DescriptorName>
+    </MeshHeading>
+    <MeshHeading>
+      <DescriptorName MajorTopicYN="N">Survival Analysis
+      </DescriptorName>
+    </MeshHeading>
+    <MeshHeading>
+      <DescriptorName MajorTopicYN="Y">Survival Rate
+      </DescriptorName>
+    </MeshHeading>
+  </MeshHeadingList>
+</MedlineCitation>
