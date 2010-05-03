@@ -1,0 +1,30 @@
+<!--
+  ~ Copyright (c) 2007, Mark Logic. All Rights Reserved.
+  -->
+<assembly xmlns="http://maven.apache.org/POM/4.0.0"
+          xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+          xsi:schemaLocation='http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/assembly-1.0.0.xsd'>
+
+  <includeBaseDirectory>true</includeBaseDirectory>
+  <id>distribution</id>
+  <formats>
+    <format>zip</format>
+  </formats>
+  <files>
+    <file>
+      <source>target/${pom.artifactId}-${pom.version}.jar</source>
+      <outputDirectory>/lib</outputDirectory>
+    </file>
+  </files>
+  <fileSets>
+    <fileSet>
+      <directory>src/main/resources</directory>
+      <outputDirectory>conf/</outputDirectory>
+    </fileSet>
+  </fileSets>
+  <dependencySets>
+    <dependencySet>
+      <outputDirectory>/lib</outputDirectory>
+    </dependencySet>
+  </dependencySets>
+</assembly>
