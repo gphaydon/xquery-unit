@@ -68,6 +68,7 @@ import com.marklogic.ps.util.JDomUtils;
  * in which case the connectionUrl can be thought off as the base to which we
  * will add the specific <code>servicePath</code> .
  * 
+ * @author Mark Helmstetter
  * @author Will LaForest
  */
 public abstract class XQueryXmlHttpTestCase extends XQueryTestCase {
