@@ -33,14 +33,20 @@ public class JDomUtils {
 	}
 
 	public static String convertDocumentToString(Document doc) {
+		String result = null;
 		Format format = Format.getRawFormat();
 		format.setOmitDeclaration(true);
-		return convertDocumentToString(doc, format);
+		result = convertDocumentToString(doc, format);
+		return result;
 	}
 	
 	public static String convertDocumentToString(Document doc, Format format) {
-		XMLOutputter outputter = new XMLOutputter(format);
-		return outputter.outputString(doc);
+		String result = null;
+		if (doc != null) {
+			XMLOutputter outputter = new XMLOutputter(format);
+			return outputter.outputString(doc);
+		}
+		return result;
 	}	
 
 	public static void assertJdomEquals(Document expected, Document obtained)

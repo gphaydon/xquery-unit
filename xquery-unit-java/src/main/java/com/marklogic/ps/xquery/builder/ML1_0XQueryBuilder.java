@@ -63,7 +63,7 @@ public class ML1_0XQueryBuilder extends AbstractXQueryBuilder implements XQueryB
 					sb.append("('").append(items[j].asString()).append("')");
 				}
 			}
-			sb.append(") };\n");
+			sb.append(");\n");
 		} else if (value instanceof XdmNode) {
 			sb.append("_string external;\n");
 			sb.append("declare variable $").append(name);

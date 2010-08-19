@@ -2,6 +2,7 @@ package com.marklogic.ps.test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.math.BigInteger;
@@ -24,6 +25,7 @@ import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.xml.sax.InputSource;
 
 import com.marklogic.ps.util.JDomUtils;
 import com.marklogic.ps.util.Xcc;
@@ -142,16 +144,16 @@ public abstract class XQueryTestCase extends TestCase {
      * @throws Exception if a problem occurs
      */
     protected Document getResourceAsDocument(String name) throws Exception {
-      InputStream is = TestCaseUtil.getResourceAsInputStream(this.getClass(), name);
-      SAXBuilder builder = new SAXBuilder(false);
-      Document doc = builder.build(is);
-      return doc;
+    	Reader reader = TestCaseUtil.getResourceReader(this.getClass(), name);
+    	SAXBuilder builder = new SAXBuilder(false);
+    	Document doc = builder.build(reader);
+    	return doc;
     }
     
     protected org.w3c.dom.Document getResourceAsDomDocument(String name) throws Exception {
-    	InputStream is = TestCaseUtil.getResourceAsInputStream(this.getClass(), name);
+    	Reader reader = TestCaseUtil.getResourceReader(this.getClass(), name);
     	DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-    	org.w3c.dom.Document doc = builder.parse(is);
+    	org.w3c.dom.Document doc = builder.parse(new InputSource(reader));
     	return doc;
     }
     
@@ -167,7 +169,7 @@ public abstract class XQueryTestCase extends TestCase {
      * @throws Exception
      */
     protected InputStream getResourceAsInputStream(String name) throws IOException {
-      return TestCaseUtil.getResourceAsInputStream(this.getClass(), name);
+    	return TestCaseUtil.getResourceAsInputStream(this.getClass(), name);
     }
 
     /**
@@ -227,13 +229,20 @@ public abstract class XQueryTestCase extends TestCase {
      * @throws Exception if exception occurrs
      */
     protected Document executeQueryAsDocument(String query, RequestOptions options, XdmVariable... variables) throws Exception {
-        ResultSequence rs = executeQuery(query, options, variables);
+    	if (logger.isDebugEnabled()) {
+			logger.debug("executeQueryAsDocument(): query: " + query);
+    	}
+    	ResultSequence rs = executeQuery(query, options, variables);
+        Document result = null;
         if (rs.hasNext()) {
           InputStream is = rs.next().asInputStream();
           SAXBuilder builder = new SAXBuilder(false);
-          return builder.build(is);
+          result = builder.build(is);
         }
-        return null;
+        if (logger.isDebugEnabled() && result != null) {
+			logger.debug("executeQueryAsDocument(): response: " + JDomUtils.convertDocumentToString(result, Format.getPrettyFormat()));
+    	}
+        return result;
     }
 
     /**
@@ -263,6 +272,20 @@ public abstract class XQueryTestCase extends TestCase {
         }
         return session.submitRequest(req);
     }
+    
+    protected Document executeMainModuleAsDocument(String moduleName, RequestOptions options, XdmVariable... variables) throws Exception {
+    	ResultSequence rs = executeMainModule(moduleName, options, variables);
+    	Document result = null;
+    	if (rs.hasNext()) {
+            InputStream is = rs.next().asInputStream();
+            SAXBuilder builder = new SAXBuilder(false);
+            result = builder.build(is);
+        }
+    	if (logger.isDebugEnabled() && result != null) {
+			logger.debug("executeMainModuleAsDocument(): response: " + JDomUtils.convertDocumentToString(result));
+    	}
+        return result;
+    }
 
     /**
      * Executes a function in library module.
@@ -274,8 +297,12 @@ public abstract class XQueryTestCase extends TestCase {
      * @throws RequestException
      */
     protected ResultSequence executeLibraryModule(String modulePath, String namespace, String function, XdmValue... params) throws RequestException {
-      checkSession();
-      return Xcc.invokeModuleFunction(session, modulePath, namespace, function, params);
+    	checkSession();
+    	ResultSequence rs = Xcc.invokeModuleFunction(session, modulePath, namespace, function, params);
+    	if (logger.isDebugEnabled()) {
+			logger.debug("executeLibraryModule(): response: " + rs.asString());
+    	}
+    	return rs; 
     }
 
     /**
@@ -297,14 +324,16 @@ public abstract class XQueryTestCase extends TestCase {
         doc = builder.build(is);
       }
       if (logger.isDebugEnabled()) {
-			logger.debug("executeLibraryModuleAsDocument(): response: " + JDomUtils.convertDocumentToString(doc));
+			logger.debug("executeLibraryModuleAsDocument(): response: " + JDomUtils.convertDocumentToString(doc, Format.getPrettyFormat()));
+      }
+      if (rs.hasNext()) {
+    	  logger.warn("executeLibraryModuleAsDocument(): Multiple results returned");
       }
       return doc;
     }
     
     protected void insertTestContent(String resourceLoc) throws IOException, RequestException {
-    	URL contentUrl = this.getClass().getResource(resourceLoc);
-    	insertTestContent(contentUrl);
+    	insertTestContent(resourceLoc, resourceLoc);
     }
     
     protected void insertTestContent(String resourceLoc, String uri) throws IOException, RequestException {
