@@ -2,16 +2,24 @@ package com.marklogic.ps.test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.Reader;
 import java.io.StringWriter;
 import java.net.URL;
 
 import junit.framework.TestCase;
 
+import com.marklogic.ps.util.UnicodeReader;
+
 /**
  * Provides utility functions often needed when writing XQuery unit tests.
  */
 public class TestCaseUtil {
+	
+	public static Reader getResourceReader(Class testCaseClass, String filename) throws Exception {
+        InputStream is = getResourceAsInputStream(testCaseClass, filename);
+        UnicodeReader reader = new UnicodeReader(is, "UTF-8");
+        return reader;
+	}
     
     /**
      * Reads the content of the given resource file into a string.  The resource
@@ -24,8 +32,7 @@ public class TestCaseUtil {
      * @throws Exception
      */
     public static String getResource(Class testCaseClass, String filename) throws Exception {
-        InputStream is = getResourceAsInputStream(testCaseClass, filename);
-        InputStreamReader in = new InputStreamReader(is, "UTF-8");
+        Reader in = getResourceReader(testCaseClass, filename);
         StringWriter contentBuffer = new StringWriter();
 
         char[] buff = new char[1024];
@@ -48,7 +55,7 @@ public class TestCaseUtil {
      * @throws IOException if an IOException occurs
      */
     public static InputStream getResourceAsInputStream(Class testCaseClass, String filename) throws IOException {
-	URL contentUrl = testCaseClass.getResource("resource/" + filename);
+    	URL contentUrl = testCaseClass.getResource("resource/" + filename);
         if ((contentUrl) == null)
             contentUrl = testCaseClass.getResource(filename);
 
