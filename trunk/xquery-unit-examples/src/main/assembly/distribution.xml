@@ -6,7 +6,7 @@
           xsi:schemaLocation='http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/assembly-1.0.0.xsd'>
 
   <includeBaseDirectory>true</includeBaseDirectory>
-  <id>distribution</id>
+  <id></id>
   <formats>
     <format>zip</format>
   </formats>
