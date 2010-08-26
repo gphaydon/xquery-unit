@@ -43,12 +43,15 @@ return
 <html>
 <head>
 <style type="text/css">
-#result {{
+.result {{
   border:1px solid blue;
   margin: 10px;
 }}
 .title {{
   font-weight: bold;
+}}
+.highlight {{
+  background-color:#FFFF00;
 }}
 </style>
 </head>
@@ -65,14 +68,14 @@ if (fn:exists($q)) then
 Results <b>{$start}</b> to <b>{$end}</b> of <b>{$total}</b> for <b>{$q}</b> 
 </div>
 {
-    for $r in $results/search:result
+    for $r at $i in $results/search:result
     let $log := xdmp:log($r)
     let $uri := $r/@uri
     let $doc := fn:doc($uri)
     let $title := fn:string($doc//MedlineCitation/Article/ArticleTitle)
     let $abstract := local:transform-snippet($r/search:snippet)
     return 
-    <div id="result">
+    <div id="result{$i}" class="result">
       <span class="title">{$title}</span>,
       <div>{$abstract}</div>
     </div>
