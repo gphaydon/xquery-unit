@@ -55,7 +55,7 @@
    <dependency>
       <groupId>com.marklogic.ps</groupId>
       <artifactId>xquery-unit</artifactId>
-      <version>0.3</version>
+      <version>0.3.4</version>
     </dependency>
   </dependencies>
   <build>
