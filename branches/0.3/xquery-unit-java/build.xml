@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="US-ASCII" standalone="no"?>
+                                                                  
+<project name="MarkLogic XQuery Unit Test Support" default="jar" basedir=".">
+
+  <target name="init">
+    <property name="version" value="1.0" />
+    <property name="build.compiler" value="modern" />
+    <property name="build.compiler.pedantic" value="false" />
+    <property name="sourceDir" value="src" />
+    <property name="classDir" value="classes" />
+    <property name="jarDir" value="jars" />
+    <property name="libDir" value="lib" />
+    <property name="reports" value="reports" />
+    <property name="jarName" value="xquery-unit.jar"/>
+    <property name="reports.tests" value="${reports}/tests"/>
+    <property name="reports.html" value="${reports}/html"/>
+
+    <!-- Sets the DSTAMP, TSTAMP and TODAY properties.
+         DSTAMP is in the "yyyymmdd" format,
+         TSTAMP is in the "hhmm" format and
+         TODAY is "month day year".
+    -->
+
+    <tstamp/>
+
+    <path id="classpath">
+      <pathelement location="${libDir}/jdom.jar"/>
+      <pathelement location="${libDir}/junit.jar"/>
+      <pathelement location="${libDir}/commons-httpclient-3.0.1.jar"/>
+      <pathelement location="${libDir}/xcc.jar"/>
+      <pathelement location="${libDir}/xmlunit-1.2.jar"/>
+    </path>
+
+    <fileset id="file.tojar" dir="${classDir}">
+      <exclude name="**/*Test.class"/>
+      <exclude name="**/*TestApp.class"/>
+      <exclude name="**/Test*.class"/>
+      <exclude name="**/AbstractTest*.class"/>
+      <exclude name="**/Mock*.class"/>
+    </fileset>
+
+  </target>
+
+  <target name="clean" depends="init">
+    <delete quiet="on" dir="${classDir}" />
+  </target>
+
+  <target name="prepare" depends="clean">
+    <mkdir dir="${classDir}" />
+    <mkdir dir="${jarDir}" />
+  </target>
+
+  <target name="resources" depends="init">
+    <copy todir="${classDir}">
+      <fileset dir="${sourceDir}"
+               includes="**/resource/**" />
+    </copy>
+  </target>
+
+  <target name="compile" depends="prepare">
+    <javac srcdir="${sourceDir}" destdir="${classDir}"
+           optimize="on"
+           source="1.5"
+           compiler="javac1.5"
+           debug="${debug}"
+           deprecation="on">
+      <classpath refid="classpath"/>
+    </javac>
+  </target>
+
+  <target name="jarclasses" depends="init">
+    <jar jarfile="${jarDir}/${jarName}" basedir="${classDir}">
+      <fileset refid="file.tojar"/>
+      <manifest>
+        <attribute name="Implementation-Title" value="Mark Logic XQuery Unit Test Support"/>
+        <attribute name="Implementation-Vendor" value="Mark Logic"/>
+        <attribute name="Implementation-Version" value="${version}"/>
+        <attribute name="Implementation-Vendor-Id" value="com.marklogic"/>
+        <attribute name="Class-Path" value="jdom.jar commons-httpclient-3.0.1.jar junit.jar xcc.jar"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <target name="compileandjar" depends="init">
+    <antcall target="compile"/>
+    <antcall target="resources"/>
+    <antcall target="jarclasses"/>
+  </target>
+
+  <target name="jar" depends="prepare">
+    <property name="debug" value="on"/>
+    <antcall target="compileandjar"/>
+  </target>
+
+  <target name="debugjar" depends="prepare">
+    <property name="debug" value="on"/>
+    <antcall target="compileandjar"/>
+  </target>
+
+  <target name="javadoc" depends="prepare">
+    <mkdir dir="javadocs"/>
+    <javadoc sourcepath="src" destdir="javadocs" packagenames="com.*" windowtitle="XQuery Unit Javadocs"/>
+  </target>
+
+  <target name="build" depends="jar,javadoc"/>
+
+
+</project>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
