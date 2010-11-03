@@ -31,6 +31,7 @@ import org.apache.xpath.objects.XObject;
 import org.jdom.Document;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
+import org.junit.Before;
 import org.xml.sax.InputSource;
 
 import com.marklogic.ps.util.JDomUtils;
@@ -104,7 +105,7 @@ public abstract class XQueryXmlHttpTestCase extends XQueryTestCase {
 		loadProps(com.marklogic.ps.test.XQueryXmlHttpTestCase.class);
 	}
 
-	private final static void loadProps(Class clazz) {
+	private final static void loadProps(Class<?> clazz) {
 		String propsLocation = null;
 		InputStream is = TestCaseUtil.getDefaultResourceAsInputStream(clazz,
 				DEFAULT_PROPS_LOCATIONS);
@@ -123,6 +124,7 @@ public abstract class XQueryXmlHttpTestCase extends XQueryTestCase {
 		}
 	}
 
+	@Before
 	protected void setUp() throws Exception {
 		super.setUp();
 		loadProps(this.getClass());
