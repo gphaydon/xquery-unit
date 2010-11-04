@@ -74,7 +74,7 @@ public abstract class XQueryTestCase {
     }
 
     @Before
-    protected void setUp() throws Exception {
+    public void setUp() throws Exception {
 
         Properties props = new Properties();
         InputStream is = TestCaseUtil.getDefaultResourceAsInputStream(this.getClass(),
@@ -91,7 +91,7 @@ public abstract class XQueryTestCase {
     }
 
     @After
-    protected void tearDown() throws Exception {
+    public void tearDown() throws Exception {
         removeTestContent();
 
         if (session != null) {
