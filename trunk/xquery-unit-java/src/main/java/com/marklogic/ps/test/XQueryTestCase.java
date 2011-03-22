@@ -85,7 +85,11 @@ public abstract class XQueryTestCase {
         props.load(is);
 
         // get this from resource properties
-        URI uri = new URI(props.getProperty("connectionUri"));
+        String connectionUri = System.getProperty("marklogic.xdbc.connectionUri");
+        if (connectionUri == null || connectionUri.isEmpty()) {
+            connectionUri = props.getProperty("connectionUri");
+        }
+        URI uri = new URI(connectionUri);
         ContentSource cs = ContentSourceFactory.newContentSource(uri);
         session = cs.newSession();
     }
